@@ -1,0 +1,156 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "This file is @generated automatically"
+    ],
+    "hash": "2c823c259cfcc01e5e9265910bfaded8",
+    "content-hash": "a206d62461cb0760e391d4f7a8ef775c",
+    "packages": [
+        {
+            "name": "tyurderi/cli-parser",
+            "version": "v2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/tyurderi/cli-parser.git",
+                "reference": "5059ee149b91e58251f0b6487fc9f4076482ef0b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/tyurderi/cli-parser/zipball/5059ee149b91e58251f0b6487fc9f4076482ef0b",
+                "reference": "5059ee149b91e58251f0b6487fc9f4076482ef0b",
+                "shasum": ""
+            },
+            "require": {
+                "tyurderi/string": "v1.5"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "CliParser\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "tyurderi",
+                    "email": "tyurderi@yahoo.de"
+                }
+            ],
+            "description": "A lightweight command line arguments parser.",
+            "time": "2016-03-10 14:51:32"
+        },
+        {
+            "name": "tyurderi/console",
+            "version": "1.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/tyurderi/console.git",
+                "reference": "1f28e8e0542ba05ea6eff17d538164cc5995bb8d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/tyurderi/console/zipball/1f28e8e0542ba05ea6eff17d538164cc5995bb8d",
+                "reference": "1f28e8e0542ba05ea6eff17d538164cc5995bb8d",
+                "shasum": ""
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "TM\\Console\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "tyurderi",
+                    "email": "tyurderi@yahoo.de"
+                }
+            ],
+            "time": "2016-03-28 13:00:31"
+        },
+        {
+            "name": "tyurderi/php-file-builder",
+            "version": "1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/tyurderi/php-file-builder.git",
+                "reference": "d9a43acac06b9f86bbe7a3b5644bd15ac5e2fa80"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/tyurderi/php-file-builder/zipball/d9a43acac06b9f86bbe7a3b5644bd15ac5e2fa80",
+                "reference": "d9a43acac06b9f86bbe7a3b5644bd15ac5e2fa80",
+                "shasum": ""
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "WCKZ\\Generator\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "tyurd",
+                    "email": "tyurderi@yahoo.de"
+                }
+            ],
+            "description": "A small helper class to generate files.",
+            "time": "2016-03-25 11:10:43"
+        },
+        {
+            "name": "tyurderi/string",
+            "version": "v1.5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/tyurderi/php-string.git",
+                "reference": "42347b6332d7ea152372f2037a90df5d06cfae41"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/tyurderi/php-string/zipball/42347b6332d7ea152372f2037a90df5d06cfae41",
+                "reference": "42347b6332d7ea152372f2037a90df5d06cfae41",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "WCKZ\\StringUtil\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "tyurderi",
+                    "email": "tyurderi@yahoo.de"
+                }
+            ],
+            "description": "A string manipulation helper library.",
+            "time": "2016-03-10 14:46:42"
+        }
+    ],
+    "packages-dev": [],
+    "aliases": [],
+    "minimum-stability": "stable",
+    "stability-flags": [],
+    "prefer-stable": false,
+    "prefer-lowest": false,
+    "platform": [],
+    "platform-dev": []
+}

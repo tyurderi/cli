@@ -1,0 +1,16 @@
+{
+    "name": "tyurderi/cli",
+    "type": "library",
+    "license": "MIT",
+    "minimum-stability": "stable",
+    "require": {
+        "tyurderi/console": "^1.2",
+        "tyurderi/cli-parser": "^2.0",
+        "tyurderi/php-file-builder": "^1.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "CLI\\": "src/"
+        }
+    }
+}
