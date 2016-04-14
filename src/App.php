@@ -77,7 +77,7 @@ class App
         {
             if(!empty($this->name))
             {
-                Console::writeLine('%s (v%s)', $this->name, $this->version);
+                Console::writeLine('%s (%s)', $this->name, $this->version);
             }
             else
             {
