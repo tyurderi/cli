@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "2c823c259cfcc01e5e9265910bfaded8",
-    "content-hash": "a206d62461cb0760e391d4f7a8ef775c",
+    "hash": "142c6a2e0c49005b77edce3aa1925bb8",
+    "content-hash": "20a269c56360293c9ca6ba67b225c7ce",
     "packages": [
         {
             "name": "tyurderi/cli-parser",

@@ -21,6 +21,11 @@ class Flag implements FlagInterface
 	private $description;
 
 	/**
+	 * @var boolean
+	 */
+	private $required;
+
+	/**
 	 * @var string
 	 */
 	private $defaultValue;
@@ -57,6 +62,18 @@ class Flag implements FlagInterface
 	public function setDescription($description)
 	{
 		$this->description = $description;
+
+		return $this;
+	}
+
+	public function getRequired()
+	{
+		return $this->required;
+	}
+
+	public function setRequired($required)
+	{
+		$this->required = $required;
 
 		return $this;
 	}

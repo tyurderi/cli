@@ -63,71 +63,102 @@ abstract class CommandAbstract implements CommandInterface
     /**
      * MyExampleCommand
      *
-     * Its used to be an example. Nothing more, nothing less.
+     * Usage: TestCommand <firstname> [lastname] [age (default: 18)] [--uppercase] [--lowercase] [-s, --short] [--size (default: 10)]
      *
-     * Arguments:
-     *   firstname (required) Defines the fistname to say hello.
-     *   lastname  (optional) Defines the lastname to say hello.
-     *   age=18    (optional) Defines the age for the human.
+     * Required Arguments:
+     *     firstname
+     *         Defines the firstname to say hello.
      *
-     * Flags:
-     *   --uppercase          Write everything in uppercase.
-     *   --lowercase          Write everything in lowercase.
-     *   --short|-s           Write everything as short as possible.
-     *   --size=10			Probably the size of the content written.
+     * Optional Arguments:
+     *     lastname
+     *         Defines the lastname to say hello.
+     *     age (default: 18)
+     *         Defines the age for the human.
+     *     --uppercase
+     *         Write everything in uppercase.
+     *     --lowercase
+     *         Write everything in lowercase.
+     *     -s, --short
+     *         Write everything as short as possible.
+     *     --size (default: 10)
+     *         Probably the size of the content written.
+     *
+     * Description:
+     *     Its used to be an example. Nothing more, nothing less.
      */
     public function getExtendedUsage()
     {
         $usage = new FileBuilder();
-        $usage->add($this->getName());
-        $usage->newLine(2);
-        $usage->add($this->getDescription());
-        $usage->newLine();
+        $usage->add($this->getName())->newLine(2);
 
-        if($arguments = $this->getArguments())
+        if($this->getDescription())
         {
-            $usage->newLine()->add('Arguments:')->newLine();
+            $usage->add($this->getDescription())->newLine(2);
+        }
 
-            foreach($arguments as $argument)
+        $usage->add('Usage: %s', $this->getUsage())->newLine(2);
+
+        $required = new FileBuilder();
+        $optional = new FileBuilder();
+        foreach($this->getArguments() as $argument)
+        {
+            $tmp = $argument->getRequired() ? $required : $optional;
+
+            $tmp->indent()->add($argument->getName());
+
+            if($argument->getDefaultValue())
             {
-                $name = $argument->getName();
-                if($argument->getDefaultValue())
-                {
-                    $name .= '=' . $argument->getDefaultValue();
-                }
-                $usage->add('  %-11s %-11s %s', $name, $argument->getRequired() ? '' : '(optional)',
-                    $argument->getDescription());
+                $tmp->add(' (default: %s)', $argument->getDefaultValue());
+            }
 
-                $usage->newLine();
+            $tmp->newLine();
+
+            if($argument->getDescription())
+            {
+                $tmp->indent(2)->add($argument->getDescription())->newLine();
             }
         }
 
-        if($flags = $this->getFlags())
+        foreach($this->getFlags() as $flag)
         {
-            $usage->newLine()->add('Flags:')->newLine();
+            $tmp = $flag->getRequired() ? $required : $optional;
 
-            foreach($flags as $flag)
+            $tmp->indent();
+            if($flag->getShortHand())
             {
-                $name = $flag->getName();
-                if($flag->getShortHand())
-                {
-                    $name .= '|-' . $flag->getShortHand();
-                }
-
-                if($flag->getDefaultValue())
-                {
-                    $name .= '=' . $flag->getDefaultValue();
-                }
-
-                $usage->add('  --%-21s %s', $name, $flag->getDescription())->newLine();
+                $tmp->add('-%s, ', $flag->getShortHand());
             }
+
+            $tmp->add('--%s', $flag->getName());
+
+            if($flag->getDefaultValue())
+            {
+                $tmp->add(' (default: %s)', $flag->getDefaultValue());
+            }
+
+            $tmp->newLine();
+
+            if($flag->getDescription())
+            {
+                $tmp->indent(2)->add($flag->getDescription())->newLine();
+            }
+        }
+
+        if(!empty($required))
+        {
+            $usage->add('Required Arguments:')->newLine()->add($required)->newLine();
+        }
+
+        if(!empty($optional))
+        {
+            $usage->add('Optional Arguments:')->newLine()->add($optional);
         }
 
         return $usage;
     }
 
     /**
-     * TestCommand <firstname> [lastname] [age=18] [--uppercase] [--lowercase] [--short|-s] [--size=10]
+     * TestCommand <firstname> [lastname] [age (default: 18)] [--uppercase] [--lowercase] [-s, --short] [--size] (default: 10)]
      */
     public function getUsage()
     {
@@ -144,23 +175,27 @@ abstract class CommandAbstract implements CommandInterface
                 $usage .= sprintf(
                     ' [%s%s]',
                     $argument->getName(),
-                    $argument->getDefaultValue() ? '=' .$argument->getDefaultValue() : ''
+                    $argument->getDefaultValue() ? sprintf(' (default: %s)', $argument->getDefaultValue()) : ''
                 );
             }
         }
 
         foreach($this->getFlags() as $flag)
         {
-            $usage .= ' [--' . $flag->getName();
-
             if($flag->getShortHand())
             {
-                $usage .= '|-' . $flag->getShortHand();
+                $usage .= ' [-' . $flag->getShortHand() . ', ';
             }
+            else
+            {
+                $usage .= ' [';
+            }
+
+            $usage .= '--' . $flag->getName();
 
             if($flag->getDefaultValue())
             {
-                $usage .= '=' . $flag->getDefaultValue();
+                $usage .= sprintf(' (default: %s)', $flag->getDefaultValue());
             }
 
             $usage .= ']';
