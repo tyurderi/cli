@@ -18,10 +18,16 @@ class App
      */
     private $version;
 
-    public function __construct($version = 'undefined')
+    /**
+     * @var string
+     */
+    private $name;
+
+    public function __construct($version = 'undefined', $name = '')
     {
         $this->commands = array();
         $this->version  = $version;
+        $this->name     = $name;
     }
 
     /**
@@ -69,7 +75,14 @@ class App
         }
         else if($result->hasFlag('version') && $result->hasArgument(0) === false)
         {
-            Console::writeLine('Version: %s', $this->version);
+            if(!empty($this->name))
+            {
+                Console::writeLine('%s (v%s)', $this->name, $this->version);
+            }
+            else
+            {
+                Console::writeLine('Version %s', $this->version);
+            }
         }
         else
         {
