@@ -13,9 +13,15 @@ class App
      */
     private $commands;
 
-    public function __construct()
+    /**
+     * @var string
+     */
+    private $version;
+
+    public function __construct($version = 'undefined')
     {
         $this->commands = array();
+        $this->version  = $version;
     }
 
     /**
@@ -53,37 +59,31 @@ class App
     {
         $result = $this->parseArguments($args);
 
-        if(!$result->hasArgument(0))
+        if($result->isEmpty() || ($result->hasFlag('help') && $result->hasArgument(0) === false))
         {
             $this->showHelp();
         }
+        else if($result->hasFlag('help') && $result->hasArgument(0))
+        {
+            $this->showCommandUsage($result->getArgument(0));
+        }
+        else if($result->hasFlag('version') && $result->hasArgument(0) === false)
+        {
+            Console::writeLine('Version: %s', $this->version);
+        }
         else
         {
-            if($result->getArgument(0) == 'usage')
+            $commandName = $result->getArgument(0);
+
+            if($command = $this->getCommandByName($commandName))
             {
-                if($result->hasArgument(1))
-                {
-                    $this->showCommandUsage($result->getArgument(1));
-                }
-                else
-                {
-                    $this->showUsage('usage <command>');
-                }
+                $result = $this->parseArguments(array_splice($args, 1));
+
+                $this->executeCommand($command, $result);
             }
             else
             {
-                $commandName = $result->getArgument(0);
-
-                if($command = $this->getCommandByName($commandName))
-                {
-                    $result = $this->parseArguments(array_splice($args, 1));
-
-                    $this->executeCommand($command, $result);
-                }
-                else
-                {
-                    Console::writeLine('Unknown command: %s.', $commandName);
-                }
+                Console::writeLine('Unknown command: %s.', $commandName);
             }
         }
     }
@@ -198,16 +198,15 @@ class App
      */
     public function showHelp()
     {
-        $this->showUsage('usage <command>');
+        $this->showUsage('<command> [--help]');
 
         Console::newLine();
         Console::writeLine('Available commands:');
 
-        foreach($this->commands as $i => $command)
+        foreach($this->commands as $command)
         {
-            $index = $i + 1;
-
-            Console::writeLine('%2d. %-20s %s', $index, $command->getName(), $command->getDescription());
+            Console::writeLine('    %s', $command->getName());
+            Console::writeLine('        %s', $command->getDescription());
         }
     }
 

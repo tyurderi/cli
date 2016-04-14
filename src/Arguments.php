@@ -33,6 +33,11 @@ class Arguments
         $this->flags     = $arguments;
     }
 
+    public function isEmpty()
+    {
+        return empty($this->arguments) && empty($this->flags);
+    }
+
     public function getArguments()
     {
         return $this->arguments;
