@@ -58,6 +58,15 @@ class Arguments
         return isset($this->arguments[$key]);
     }
 
+    public function removeArgument($key)
+    {
+        if($this->hasArgument($key))
+        {
+            unset($this->arguments[$key]);
+            $this->arguments = array_keys($this->arguments);
+        }
+    }
+
     public function getFlags()
     {
         return $this->flags;
@@ -76,6 +85,15 @@ class Arguments
     public function hasFlag($name)
     {
         return isset($this->flags[$name]);
+    }
+
+    public function removeFlag($key)
+    {
+        if($this->hasFlag($key))
+        {
+            unset($this->flags[$key]);
+            $this->flags = array_values($this->flags);
+        }
     }
 
 }

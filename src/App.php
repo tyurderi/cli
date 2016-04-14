@@ -90,7 +90,7 @@ class App
 
             if($command = $this->getCommandByName($commandName))
             {
-                $result = $this->parseArguments(array_splice($args, 1));
+                $result->removeArgument(0);
 
                 $this->executeCommand($command, $result);
             }
