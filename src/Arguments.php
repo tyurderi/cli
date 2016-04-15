@@ -63,7 +63,7 @@ class Arguments
         if($this->hasArgument($key))
         {
             unset($this->arguments[$key]);
-            $this->arguments = array_keys($this->arguments);
+            $this->arguments = array_values($this->arguments);
         }
     }
 
