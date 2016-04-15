@@ -58,15 +58,15 @@ class TestCommand extends \CLI\Base\CommandAbstract implements \CLI\Base\Command
         $isShort     = $this->hasFlag('short');
         $size        = $this->getFlag('size');
 
-        Console::writeLine('Firstname: %s', $firstname);
-        Console::writeLine('Lastname: %s', $lastname);
+        Console()->out('Firstname: %s', $firstname);
+        Console()->out('Lastname: %s', $lastname);
 
-        Console::writeLine('Age: %d', $age);
+        Console()->out('Age: %d', $age);
 
-        Console::writeLine('uppercase %s', $isUppercase ? 'true' : 'false');
-        Console::writeLine('lowercase %s', $isLowercase ? 'true' : 'false');
-        Console::writeLine('short %s', $isShort ? 'true' : 'false');
-        Console::writeLine('size: %d', $size);
+        Console()->out('uppercase %s', $isUppercase ? 'true' : 'false');
+        Console()->out('lowercase %s', $isLowercase ? 'true' : 'false');
+        Console()->out('short %s', $isShort ? 'true' : 'false');
+        Console()->out('size: %d', $size);
     }
 
 }

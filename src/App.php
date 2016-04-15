@@ -77,11 +77,11 @@ class App
         {
             if(!empty($this->name))
             {
-                Console::writeLine('%s (%s)', $this->name, $this->version);
+                Console()->out('%s (%s)', $this->name, $this->version);
             }
             else
             {
-                Console::writeLine('Version %s', $this->version);
+                Console()->out('Version: %s', $this->version);
             }
         }
         else
@@ -96,7 +96,7 @@ class App
             }
             else
             {
-                Console::writeLine('Unknown command: %s.', $commandName);
+                Console()->out('Unknown command: %s.');
             }
         }
     }
@@ -164,7 +164,7 @@ class App
             else
             {
                 $this->showUsage($command->getUsage());
-                Console::stop();
+                exit;
             }
 
             $parsedArguments[$argument->getName()] = $value;
@@ -188,7 +188,7 @@ class App
             if(!$flagFound)
             {
                 $this->showUsage($command->getUsage());
-                Console::stop();
+                exit;
             }
         }
 
@@ -203,7 +203,7 @@ class App
      */
     public function showUsage($usage)
     {
-        Console::writeLine('Usage: %s %s', basename($_SERVER['PHP_SELF']), $usage);
+        Console()->out('Usage: %s %s', basename($_SERVER['PHP_SELF']), $usage);
     }
 
     /**
@@ -213,13 +213,13 @@ class App
     {
         $this->showUsage('<command> [--help]');
 
-        Console::newLine();
-        Console::writeLine('Available commands:');
+        Console()->br();
+        Console()->out('Available commands:');
 
         foreach($this->commands as $command)
         {
-            Console::writeLine('    %s', $command->getName());
-            Console::writeLine('        %s', $command->getDescription());
+            Console()->indent(4)->out('%s', $command->getName());
+            Console()->indent(8)->out('%s', $command->getDescription());
         }
     }
 
@@ -234,11 +234,11 @@ class App
         {
             $command->configure();
 
-            Console::writeLine($command->getExtendedUsage());
+            Console()->out($command->getExtendedUsage());
         }
         else
         {
-            Console::writeLine('Unknown command: %s.', $commandName);
+            Console()->out('Unknown command: %s.', $commandName);
         }
     }
 

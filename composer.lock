@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "894ec389de986b068bc2e38032ba05b7",
-    "content-hash": "6a5f88cdd3fac377f309f9e17fe6d934",
+    "hash": "e3fbda4ad06792be01727e98d98f81a4",
+    "content-hash": "180baded13ecbdc347c64c72568b2e19",
     "packages": [
         {
             "name": "tyurderi/cli-parser",
@@ -45,23 +45,26 @@
         },
         {
             "name": "tyurderi/console",
-            "version": "1.2",
+            "version": "2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/tyurderi/console.git",
-                "reference": "1f28e8e0542ba05ea6eff17d538164cc5995bb8d"
+                "reference": "4cee41c1bedc88ed670982abfaefcd8444b6472e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/tyurderi/console/zipball/1f28e8e0542ba05ea6eff17d538164cc5995bb8d",
-                "reference": "1f28e8e0542ba05ea6eff17d538164cc5995bb8d",
+                "url": "https://api.github.com/repos/tyurderi/console/zipball/4cee41c1bedc88ed670982abfaefcd8444b6472e",
+                "reference": "4cee41c1bedc88ed670982abfaefcd8444b6472e",
                 "shasum": ""
             },
             "type": "library",
             "autoload": {
                 "psr-4": {
                     "TM\\Console\\": "src/"
-                }
+                },
+                "files": [
+                    "src/Console.function.php"
+                ]
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
@@ -73,7 +76,7 @@
                     "email": "tyurderi@yahoo.de"
                 }
             ],
-            "time": "2016-03-28 13:00:31"
+            "time": "2016-04-15 08:54:07"
         },
         {
             "name": "tyurderi/php-file-builder",
