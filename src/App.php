@@ -106,23 +106,23 @@ class App
      *
      * @param $args
      *
-     * @return \CLI\Arguments
+     * @return \CLIParser\Arguments
      */
     public function parseArguments($args)
     {
-        $parser = new \CliParser\Cli\PostParser();
+        $parser = new \CLIParser\PostParser();
         $parsed = $parser->parse($args);
 
-        return new Arguments($parsed);
+        return new \CLIParser\Arguments($parsed);
     }
 
     /**
      * Wrapper function to execute a command with parsed arguments and flags.
      *
      * @param \CLI\Base\CommandAbstract $command
-     * @param \CLI\Arguments            $arguments
+     * @param \CLIParser\Arguments      $arguments
      */
-    public function executeCommand(CommandAbstract $command, Arguments $arguments)
+    public function executeCommand(CommandAbstract $command, \CLIParser\Arguments $arguments)
     {
         $this->prepareCommandArguments($command, $arguments);
 
@@ -139,9 +139,9 @@ class App
      * Adds flags values to the parsed flags and applies the gained data to the command for executing.
      *
      * @param \CLI\Base\CommandAbstract $command
-     * @param \CLI\Arguments            $arguments
+     * @param \CLIParser\Arguments      $arguments
      */
-    public function prepareCommandArguments(CommandAbstract $command, Arguments $arguments)
+    public function prepareCommandArguments(CommandAbstract $command, \CLIParser\Arguments $arguments)
     {
         $parsedArguments = array();
         $parsedFlags     = array();

@@ -5,8 +5,8 @@
     "minimum-stability": "stable",
     "require": {
         "tyurderi/console": "^1.2",
-        "tyurderi/cli-parser": "^2.0",
-        "tyurderi/php-file-builder": "^1.0"
+        "tyurderi/php-file-builder": "^1.0",
+        "tyurderi/cli-parser": "^3.0"
     },
     "autoload": {
         "psr-4": {

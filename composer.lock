@@ -4,21 +4,21 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "142c6a2e0c49005b77edce3aa1925bb8",
-    "content-hash": "20a269c56360293c9ca6ba67b225c7ce",
+    "hash": "894ec389de986b068bc2e38032ba05b7",
+    "content-hash": "6a5f88cdd3fac377f309f9e17fe6d934",
     "packages": [
         {
             "name": "tyurderi/cli-parser",
-            "version": "v2.0",
+            "version": "3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/tyurderi/cli-parser.git",
-                "reference": "5059ee149b91e58251f0b6487fc9f4076482ef0b"
+                "reference": "8c0d046a1c4c8c55746f6b6bae2fc51f2293dd29"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/tyurderi/cli-parser/zipball/5059ee149b91e58251f0b6487fc9f4076482ef0b",
-                "reference": "5059ee149b91e58251f0b6487fc9f4076482ef0b",
+                "url": "https://api.github.com/repos/tyurderi/cli-parser/zipball/8c0d046a1c4c8c55746f6b6bae2fc51f2293dd29",
+                "reference": "8c0d046a1c4c8c55746f6b6bae2fc51f2293dd29",
                 "shasum": ""
             },
             "require": {
@@ -27,7 +27,7 @@
             "type": "library",
             "autoload": {
                 "psr-4": {
-                    "CliParser\\": "src/"
+                    "CLIParser\\": "src/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -41,7 +41,7 @@
                 }
             ],
             "description": "A lightweight command line arguments parser.",
-            "time": "2016-03-10 14:51:32"
+            "time": "2016-04-15 07:57:53"
         },
         {
             "name": "tyurderi/console",
